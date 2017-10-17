@@ -71,11 +71,17 @@ function OnSequenceChanged() {
         RunCommand(command.module, command.action, command.parameter);
         ResetKeySequence();
 
-        // display
-        UpdateDisplay(command.name);
-
         // cancel clean sequence
         if (clean_key_sequence_function_id!=null) clearTimeout(clean_key_sequence_function_id);
+
+        // update display
+        UpdateDisplay(command.name);
+
+        // close popup?
+        if (!command.keep_open) {
+          // yes, close popup in 0.5 sec
+          setTimeout(function() {window.close();}, 500);
+        }
 
         // don't execute anymore
         return;

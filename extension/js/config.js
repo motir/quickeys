@@ -134,6 +134,33 @@ var KeysEditor = function(cell, onRendered, success, cancel, editorParams){
   return false;
 };
 
+
+var CheckboxFormatter = function (cell, formatterParams) {
+  if (cell.getValue() == true) {
+    e = "<i class='fa fa-check'></i>";
+  } else {
+    e = "";
+  }
+  return e;
+};
+
+
+var CheckboxClicked = function(e, cell){
+
+  v = cell.getValue();
+  if (v==false) {
+    v = true;
+  } else {
+    v = false;
+  }
+
+  cell.setValue(v);
+
+  return false;
+}
+
+
+
 function OnSequenceChanged() {
   $('#keys_modal #keys').text(key_sequence);
   if (key_sequence!='') {
@@ -189,6 +216,7 @@ function LoadScreenFromConfig() {
       {title:"Module", field:"module", sorter:"string", width:150, editor:ModuleEditor},
       {title:"Action", field:"action", sorter:"string", width:150, editor:ActionEditor},
       {title:"Parameter", field:"parameter", sorter:"string", width:150, editor:true},
+      {title:"Keep Open", field:"keep_open", formatter: CheckboxFormatter, cellClick:CheckboxClicked},
       {formatter:"buttonCross", width:30, align:"center", editor:DeleteEditor},
     ],
 
