@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <title>Quickeys - Yamaha Remote Controller</title>
+    <script src="js/ext/jquery-3.2.1.min.js"></script>
+    <script src="js/ext/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <script src="js/utils.js"></script>
+
+    <!-- begin include modules -->
+    <script src="js/modules/init.js"></script>
+    <script src="js/modules/yamaha.js"></script>
+    <script src="js/modules/homeassistant.js"></script>
+    <!-- end include modules -->
+
+    <link href="css/config.css" rel="stylesheet" type="text/css">
+    <script src="js/config.js"></script>
+
+    <script src="js/ext/tabulator.min.js"></script>
+    <link href="css/ext/tabulator_simple.min.css" rel="stylesheet" type="text/css">
+
+    <script src="js/ext/switchery.min.js"></script>
+    <link href="css/ext/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ext/pushy-buttons.min.css" rel="stylesheet" type="text/css">
+    <link href="res/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <script src="js/ext/jquery.modal.min.js"></script>
+    <link href="css/ext/jquery.modal.min.css" rel="stylesheet" type="text/css">
+
+  </head>
+<body>
+
+<div class="main-container">
+
+  <h1>Modules</h1>
+
+  <div class="modules-container">
+      
+    <div class="module" id="Yamaha">
+      <div class="module-head">
+        <div class="module-button"><input name="enabled" type="checkbox" class="js-switch"></div>
+        <div class="module-title">Yamaha</div>
+      </div>
+      <div class="module-body disabled">
+        <form class='module-settings'>
+          <table>
+            <tr>
+              <td><label>IP address</label></td>
+              <td><input name="ip" type="text"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div class="module" id="HomeAssistant">
+      <div class="module-head">
+        <div class="module-button"><input name="enabled" type="checkbox" class="js-switch"></div>
+        <div class="module-title">HomeAssistant</div>
+      </div>
+      <div class="module-body">
+        <form class='module-settings'>
+          <table>
+            <tr>
+              <td><label>IP address</label></td>
+              <td><input name="ip" type="text"></td>
+            </tr>
+            <tr>
+              <td><label>Port</label></td>
+              <td><input name="port" type="text"></td>
+            </tr>
+            <tr>
+              <td><label>API password</label></td>
+              <td><input name="api_pw" type="password"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <h1>Commands</h1>
+  
+  <form id='commands'>
+    <div id="commands_div"></div>
+    <br>
+    <div style="float:right;">
+      <button class="btn btn--sm btn--blue" id="add"><i class="fa fa-plus fa-lg"></i><span style="font-weight:bold; margin-left:10px;">Add Command</span></button>
+    </div>
+  </form>
+
+  <div class="bottom">
+    <div class="bottom-left">
+      <button class="btn btn--md" id="import"><span>Import</span></button>
+      <button class="btn btn--md" id="export"><span>Export</span></button>
+    </div>
+    <div class="bottom-right">
+      <button class="btn btn--md btn--red" id="cancel"><span style="color:#eee; font-weight:bold;">Cancel</span></button>
+      <button class="btn btn--md btn--green" id="save"><i class="fa fa-floppy-o fa-lg"></i><span style="font-weight:bold; margin-left:10px;">Save</span></button>
+    </div>
+  </div>
+
+  <div class="credits">
+    <table>
+      <tr>
+        <td><label>Version</label></td>
+        <td id="version"></td>
+      </tr>
+      <tr>
+        <td><label>Code</label></td>
+        <td>Moti Radomski</td>
+      </tr>
+      <tr>
+        <td><label>UX &amp; Logo</label></td>
+        <td>Anat Elhanani</td>
+      </tr>
+      <tr>
+        <td><label>Credits</label></td>
+        <td>
+          <a href="http://www.dafont.com/ashpikachu099.d2541" target="_blank">Highway Gothic</a> 
+          <a href="https://github.com/olifolkerd/tabulator" target="_blank">tabulator</a>  
+          <a href="http://abpetkov.github.io/switchery" target="_blank">switchery</a>
+          <a href="https://github.com/iRaul/pushy-buttons" target="_blank">Pushy Buttons</a>
+          <a href="http://fontawesome.io" target="_blank">Font Awesome</a>
+          <a href="http://jquerymodal.com" target="_blank">jQuery Modal</a>
+        </td>
+      </tr>
+      <tr>
+        <td><label>License</label></td>
+        <td><a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div id="keys_modal" style="display:none;">
+  <div id="keys" class="keys"></div>
+  <div class="keys_bottom">
+    <button id="cancel" class="btn btn--sm btn--red"><span style="color:#eee; font-weight:bold;">Cancel</span></button>
+    <button id="done" class="btn btn--sm btn--green"><span style="font-weight:bold;">Done</span></button>
+  </div>
+</div>
+
+<div id="import_modal" style="display:none;">
+  <div class="warning">
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    <span>WARNING!</span>
+  </div>
+  <div class="text">
+    This will overwrite your settings.
+  </div>
+  <input type="file" id="files" name="files[]" />
+</div>
+
+</body>
+</html>

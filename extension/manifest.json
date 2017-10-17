@@ -1,0 +1,19 @@
+{
+  "name": "Quickeys - Yamaha Remote Controller",
+  "description": "A quick keyboard remote controller for your Yamaha receiver and HomeAssistant system.",
+  "version": "1.0.3",
+  "permissions": [
+    "http://*/*",
+    "storage"
+  ],
+  "options_page": "config.html",
+  "browser_action": {
+      "default_title": "Quickeys",
+      "default_icon": "res/icon_128.png",
+      "default_popup": "popup.html"
+  },
+  "manifest_version": 2,
+  "icons" : {
+    "128" : "res/icon_128.png"
+  }
+}

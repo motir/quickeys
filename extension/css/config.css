@@ -1,0 +1,159 @@
+.main-container {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  width: 820px;
+}
+
+h1 {
+  color: #666;
+}
+
+.module {
+  border: 1px solid #e5e5e5;
+  margin: 0 0 15px 0;
+  padding: 15px;
+  color: #333;
+  font-size: 13px;
+}
+
+.module-head {
+  margin: -15px -15px 0px -15px;
+  padding: 12px 12px 15px 12px;
+  color: #555;
+  background: #ddd;
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input {
+  width: 350px;
+}
+
+.module-head.disabled {
+  font-weight: normal;
+  background: #ebebeb;
+}
+
+.module-button {
+  float: left;
+  width: 50px;
+  margin: -4px 0px 0px 0px;
+}
+
+.module-title {
+}
+
+.module-body {
+  clear: both;
+  margin: 0px -15px -15px -15px;
+  padding: 15px 18px 4px 12px;
+  width: 100%;
+}
+
+.module-body.disabled {
+  opacity: 0.5;
+  background: #eee;
+  pointer-events: none;
+}
+
+.module-settings label {
+  float: left;
+  width: 220px;
+  padding-right: 5px;
+  text-align: right;  
+  color: #555;
+}
+
+#commands {
+}
+
+.credits {
+  margin: 20px 0px 20px 0px;
+  background-color: #eee;
+  color: #888;
+  padding: 15px;
+}
+
+.credits table {
+  font-size: 12px;
+  color: #888;
+}
+
+.credits label {
+  float: left;
+  width: 70px;
+  padding-right: 5px;
+  text-align: right;  
+  color: #888;
+  font-weight: bold;
+}
+
+.credits tr {
+  vertical-align: top;
+}
+
+.credits tr>td {
+  padding-bottom: 5px;
+}
+
+a {
+  color: #888;
+}
+
+
+.bottom-left .btn {
+  background-color: #eeeeee;
+  color: #888;
+  font-weight: bold;
+}
+
+.bottom {
+  border-top: solid 1px #ddd;
+  margin: 60px 0px 58px 0px;
+  padding-top: 12px;  
+}
+
+.bottom-left {
+  float: left;
+}
+
+
+.bottom-right {
+  float: right;
+}
+
+.bottom button {
+  margin: 6px;
+}
+
+.keys {
+  height:26px;
+  font-size: 20px;
+  text-align: middle;
+  padding-top: 8px;
+  font-family: 'Electronic Highway Sign';
+}
+
+.keys.empty {
+  color: #aaa;
+  text-align: center;
+}
+
+.keys_bottom {
+  margin-top: 10px;
+  float: right;
+}
+
+
+#import_modal .warning {
+  font-size: 20px;
+  color: red;
+}
+
+#import_modal .text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: red;
+}

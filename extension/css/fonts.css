@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Electronic Highway Sign';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Electronic Highway Sign'), url('../res/EHSMB.woff') format('woff');
+}

@@ -1,0 +1,36 @@
+body {
+  background: #ddd;
+}
+
+.wrapper {
+  width:200px;
+  font-family: 'Electronic Highway Sign';
+}
+
+#keys {
+  height:26px;
+  font-size: 20px;
+  text-align: middle;
+  padding-top: 8px;
+}
+
+/* keys classes are mutually exclusive --> they will be toggled by the code but only one will be
+   active at any given time */
+
+.keys_empty {
+  color: #aaa;
+  text-align: center;
+}
+
+.keys_sequence {
+  color: #000;
+}
+
+.keys_message {
+  color: #800;
+  text-align: center;
+}
+
+#matches {
+  font-size: 14px;
+}
