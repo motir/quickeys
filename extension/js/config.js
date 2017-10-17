@@ -1,4 +1,6 @@
 function GetFormElementVal(e) {
+  // return the value of an element in a form
+  // calls the approriate getter based on the element type
   switch (e.attr('type')) {
     case "text":
     case "password":
@@ -12,6 +14,8 @@ function GetFormElementVal(e) {
 }
 
 function SetFormElementVal(e, v) {
+  // sets an element value in a form
+  // calls the appropriate setter based on the element type
   switch (e.attr('type')) {
     case "text":
     case "password":
@@ -25,7 +29,7 @@ function SetFormElementVal(e, v) {
   }
 }
 
-function UpdateModuleByEnabled(module) {
+function UpdateModuleElementClassByEnabled(module) {
   e = $('#'+module+' input[name="enabled"]').prop('checked');
   if (e) {
     $('#'+module+' .module-head').removeClass('disabled');
@@ -36,7 +40,11 @@ function UpdateModuleByEnabled(module) {
   }
 }
 
-var ModuleEditor = function(cell, onRendered, success, cancel, editorParams){
+// ---------------------------------------------
+// METHODS FOR TABULATOR (the table module)
+// ---------------------------------------------
+
+var TabulatorModuleEditor = function(cell, onRendered, success, cancel, editorParams){
   //cell - the cell component for the editable cell
   //onRendered - function to call when the editor has been rendered
   //success - function to call to pass the succesfully updated value to Tabulator
@@ -76,7 +84,7 @@ var ModuleEditor = function(cell, onRendered, success, cancel, editorParams){
 };
 
 
-var ActionEditor = function(cell, onRendered, success, cancel, editorParams){
+var TabulatorActionEditor = function(cell, onRendered, success, cancel, editorParams){
 
   module = cell.getRow().row.data.module;
 
@@ -111,7 +119,7 @@ var ActionEditor = function(cell, onRendered, success, cancel, editorParams){
 };
 
 
-var DeleteEditor = function(cell, onRendered, success, cancel, editorParams){
+var TabulatorDeleteEditor = function(cell, onRendered, success, cancel, editorParams){
   cell.getRow().delete();
   return false;
 };
@@ -119,7 +127,7 @@ var DeleteEditor = function(cell, onRendered, success, cancel, editorParams){
 
 keys_editor_cell = null;
 
-var KeysEditor = function(cell, onRendered, success, cancel, editorParams){
+var TabulatorKeysEditor = function(cell, onRendered, success, cancel, editorParams){
   $('#keys_modal').modal({
     fadeDuration: 100
   });
@@ -135,7 +143,7 @@ var KeysEditor = function(cell, onRendered, success, cancel, editorParams){
 };
 
 
-var CheckboxFormatter = function (cell, formatterParams) {
+var TabulatorCheckboxFormatter = function (cell, formatterParams) {
   if (cell.getValue() == true) {
     e = "<i class='fa fa-check'></i>";
   } else {
@@ -145,7 +153,7 @@ var CheckboxFormatter = function (cell, formatterParams) {
 };
 
 
-var CheckboxClicked = function(e, cell){
+var TabulatorCheckboxClicked = function(e, cell){
 
   v = cell.getValue();
   if (v==false) {
@@ -162,6 +170,8 @@ var CheckboxClicked = function(e, cell){
 
 
 function OnSequenceChanged() {
+  // called when a key sequence was updated
+  // will update the keys_modal classes according to the sequence
   $('#keys_modal #keys').text(key_sequence);
   if (key_sequence!='') {
     $('#keys_modal #keys').removeClass('empty');
@@ -192,6 +202,7 @@ function SaveScreenToConfig() {
 
 
 function LoadScreenFromConfig() {
+  // update ui elements based on the config vals
 
   // update ui elements
   for (var module in config.modules) {
@@ -205,19 +216,19 @@ function LoadScreenFromConfig() {
     }
 
     // update enabled states
-    UpdateModuleByEnabled(module);
+    UpdateModuleElementClassByEnabled(module);
   }
 
   // update commands table
   $("#commands_div").tabulator( {
     columns:[
       {title:"Name", field:"name", sorter:"string", width:180, editor:true},
-      {title:"Keys", field:"keys", sorter:"string", width:150, editor:KeysEditor},
-      {title:"Module", field:"module", sorter:"string", width:150, editor:ModuleEditor},
-      {title:"Action", field:"action", sorter:"string", width:150, editor:ActionEditor},
+      {title:"Keys", field:"keys", sorter:"string", width:150, editor:TabulatorKeysEditor},
+      {title:"Module", field:"module", sorter:"string", width:150, editor:TabulatorModuleEditor},
+      {title:"Action", field:"action", sorter:"string", width:150, editor:TabulatorActionEditor},
       {title:"Parameter", field:"parameter", sorter:"string", width:150, editor:true},
-      {title:"Keep Open", field:"keep_open", formatter: CheckboxFormatter, cellClick:CheckboxClicked},
-      {formatter:"buttonCross", width:30, align:"center", editor:DeleteEditor},
+      {title:"Keep Open", field:"keep_open", formatter: TabulatorCheckboxFormatter, cellClick:TabulatorCheckboxClicked},
+      {formatter:"buttonCross", width:30, align:"center", editor:TabulatorDeleteEditor},
     ],
 
     data: config.commands,
@@ -235,6 +246,7 @@ $(function () {
   // load into screen
   LoadScreenFromConfig();
 
+  // hooks
   $("#cancel").click(function(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -266,7 +278,7 @@ $(function () {
     config.modules[module].enabled = e;
 
     // update ui
-    UpdateModuleByEnabled(module);
+    UpdateModuleElementClassByEnabled(module);
   });
 
   // hook module headers
@@ -313,6 +325,7 @@ $(function () {
     });
   });
 
+  // on load file in the import popup - import json into config
   $('#import_modal #files').on('change', function (evt) {
     var files = evt.target.files;
     if (evt.target.files.length > 0) {

@@ -1,5 +1,7 @@
 modules['HomeAssistant'] = new function () {
 
+  // this.config holds the config variables for the module
+  // the default values are displayed in the config screen when initially loaded
   this.config = {
     'enabled': false                  ,
     'ip': '<homeassistant ip address>',
@@ -36,13 +38,17 @@ modules['HomeAssistant'] = new function () {
 
 
   this.CmdRunScript = function(parameter) {
-    var cmd = "services/script/"+parameter;
-    me.CallHass(cmd);
+    me.CallHass("services/script/"+parameter);
+  }
+
+  this.CmdShellCommand = function(parameter) {
+    me.CallHass("services/shell_command/"+parameter);
   }
 
   // COMMANDS
   this.commands = {
     "Run Script": this.CmdRunScript,
+    "Shell Command": this.CmdShellCommand,
   }
 
   this.init = function() {

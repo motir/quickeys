@@ -14,6 +14,7 @@ if (!config.saved_once) {
 clean_key_sequence_function_id = null;
 
 function RunCommand(module, command, parameter) {
+  // execute a command
   if (module in modules) {
     f = modules[module].commands[command];
     f(parameter);
@@ -24,6 +25,9 @@ function RunCommand(module, command, parameter) {
 clear_update_display_function_id = null;
 
 function UpdateDisplay(msg) {
+  // called to update the popup display
+
+
   // if msg==null or empty --> show key sequence info
   if (typeof(msg)!='undefined' && msg!=null && msg!='') {
     $("#keys").text(msg);
@@ -47,12 +51,18 @@ function UpdateDisplay(msg) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  // when finished loading the popup:
+
+  // start the key hook
   StartKeySequenceRecording(OnSequenceChanged);
+  
+  // update display (will show "type keys" msg)
   UpdateDisplay();
 });
 
 
 function OnSequenceChanged() {
+  // called when the key sequence was updated (user pressed a key)
 
   // if question mark --> send to config screen
   if (key_sequence == '?') {

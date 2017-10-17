@@ -1,5 +1,7 @@
 modules['Yamaha'] = new function () {
 
+  // this.config holds the config variables for the module
+  // the default values are displayed in the config screen when initially loaded
   this.config = {
     'enabled': false,
     'ip': '<yamaha receiver ip address>'
@@ -116,11 +118,10 @@ modules['Yamaha'] = new function () {
     "Set Input": this.CmdSetInput
   } 
 
+  // set init function --> will be called only when the popup is shown
+  // (not called in the config screen)
   this.init = function() {
     this.UpdateStatus();
   }
   
-
 }();
-
-
