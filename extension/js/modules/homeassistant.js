@@ -45,10 +45,15 @@ modules['HomeAssistant'] = new function () {
     me.CallHass("services/shell_command/"+parameter);
   }
 
+  this.CmdBrowser = function(parameter) {
+    window.open("http://"+me.config.ip+":"+me.config.port);
+  }
+
   // COMMANDS
   this.commands = {
     "Run Script": this.CmdRunScript,
     "Shell Command": this.CmdShellCommand,
+    "Open HomeAssistant Tab": this.CmdBrowser,
   }
 
   this.init = function() {

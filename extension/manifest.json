@@ -1,7 +1,7 @@
 {
   "name": "Quickeys - Yamaha Remote Controller",
   "description": "[Open source] A quick keyboard remote controller for your Yamaha receiver and HomeAssistant system.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "permissions": [
     "http://*/*",
     "storage"
