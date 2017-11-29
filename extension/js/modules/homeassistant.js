@@ -17,7 +17,13 @@ modules['HomeAssistant'] = new function () {
 
   this.CallHass = function(cmd, do_get_and_call_me) {
     var h = new XMLHttpRequest();
-    var url = "http://"+this.config.ip+":"+this.config.port+"/api/"+cmd;
+    var url = this.config.ip+":"+this.config.port+"/api/"+cmd;
+
+    var prefix = /^((http|https):\/\/)/i;
+    if (!prefix.test(url)) {
+      url = "http://"+url;
+    }
+
     if (typeof(do_get_and_call_me)!='undefined') {
       var method = "GET";
 
