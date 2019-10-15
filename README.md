@@ -1,10 +1,8 @@
 # quickeys
-Quickeys - A chrome extension to control your Yamaha network receiver and HomeAssistant system.
-
-A quick keyboard remote controller for your Yamaha receiver - now with HomeAssistant support.
+Quickeys - A chrome extension to control your Node-RED and HomeAssistant home automation platforms and Yamaha network receivers.
 
 To setup:
-1. Install the extension [here](https://chrome.google.com/webstore/detail/quickeys-yamaha-remote-co/jkgegggbdflhahedhddbjgmmekfefbpi)
+1. Install the extension [here](https://chrome.google.com/webstore/detail/quickeys-home-automation/jkgegggbdflhahedhddbjgmmekfefbpi)
 2. Config keyboard shortcuts (letters) and attach commands to them
 
 To use:
