@@ -17,7 +17,15 @@ function RunCommand(module, command, parameter) {
   // execute a command
   if (module in modules) {
     f = modules[module].commands[command];
-    f(parameter);
+
+    // undefined protection (only happens if there is a bug in one of the modules)
+    if (typeof(f)=='undefined') {
+      alert("Error, command "+command+" not found in module "+module+". This is an internal error, please report to moti.radomski@gmail.com, thank you!");
+    } else {
+      // call f
+      f(parameter);
+    }
+    
   }
 }
 

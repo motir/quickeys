@@ -186,10 +186,12 @@ function SaveScreenToConfig() {
 
   // save modules
   for (var module in config.modules) {
-    for (var param in modules[module].config) {
-      e = $('#'+module+' input[name="'+param+'"]');
-      v = GetFormElementVal(e);
-      config.modules[module][param] = v;
+    if (module in modules) {
+      for (var param in modules[module].config) {
+        e = $('#'+module+' input[name="'+param+'"]');
+        v = GetFormElementVal(e);
+        config.modules[module][param] = v;
+      }
     }
   }
 
@@ -207,16 +209,18 @@ function LoadScreenFromConfig() {
   // update ui elements
   for (var module in config.modules) {
 
-    // update fields
-    for (var param in modules[module].config) {
-      v = config.modules[module][param];
-      
-      e = $('#'+module+' input[name="'+param+'"]');
-      SetFormElementVal(e, v);
-    }
+    if (module in modules) {
+      // update fields
+      for (var param in modules[module].config) {
+        v = config.modules[module][param];
+        
+        e = $('#'+module+' input[name="'+param+'"]');
+        SetFormElementVal(e, v);
+      }
 
-    // update enabled states
-    UpdateModuleElementClassByEnabled(module);
+      // update enabled states
+      UpdateModuleElementClassByEnabled(module);
+    }
   }
 
   // update commands table
@@ -305,7 +309,7 @@ $(function () {
   // export
   $('#export').on('click', function () {
     var a = document.createElement("a");
-    a.download = "yamaha_remote_controller.json";
+    a.download = "quickeys.json";
 
     SaveScreenToConfig();
     var js = JSON.stringify(config);

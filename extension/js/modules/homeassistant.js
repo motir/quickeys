@@ -9,9 +9,6 @@ modules['HomeAssistant'] = new function () {
     'api_pw': ''
   }
 
-  // init variables
-  this.services = [];
-
   // set me
   var me = this;
 
@@ -63,14 +60,6 @@ modules['HomeAssistant'] = new function () {
   }
 
   this.init = function() {
-    // // read services
-    // $.ajax({
-    //   type: "GET",
-    //   url: "http://"+this.config.ip+":"+this.config.port+"/api/services?api_password="+this.config.api_pw,
-    //   success: function(data) {
-    //     me.services = data;
-    //   }
-    // });  
   }
 
 }();

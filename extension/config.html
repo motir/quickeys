@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Quickeys - Yamaha Remote Controller</title>
+    <title>Quickeys - Home Automation Remote Controller</title>
     <script src="js/ext/jquery-3.2.1.min.js"></script>
     <script src="js/ext/jquery-ui.min.js"></script>
 
@@ -13,6 +13,8 @@
     <script src="js/modules/init.js"></script>
     <script src="js/modules/yamaha.js"></script>
     <script src="js/modules/homeassistant.js"></script>
+    <script src="js/modules/node-red.js"></script>
+    <script src="js/modules/web.js"></script>
     <!-- end include modules -->
 
     <link href="css/config.css" rel="stylesheet" type="text/css">
@@ -74,6 +76,31 @@
             <tr>
               <td><label>API password</label></td>
               <td><input name="api_pw" type="password"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div class="module" id="Node-RED">
+      <div class="module-head">
+        <div class="module-button"><input name="enabled" type="checkbox" class="js-switch"></div>
+        <div class="module-title">Node-RED</div>
+      </div>
+      <div class="module-body">
+        <form class='module-settings'>
+          <table>
+            <tr>
+              <td><label>IP address</label></td>
+              <td><input name="ip" type="text"></td>
+            </tr>
+            <tr>
+              <td><label>Port</label></td>
+              <td><input name="port" type="text"></td>
+            </tr>
+            <tr>
+              <td><label>Dashboard Path</label></td>
+              <td><input name="dashboard_path" type="text"></td>
             </tr>
           </table>
         </form>
