@@ -6,7 +6,7 @@ modules['HomeAssistant'] = new function () {
     'enabled': false                  ,
     'ip': '<homeassistant ip address>',
     'port': '8123'                    ,
-    'api_pw': ''
+    'long_lived_token': ''
   }
 
   // set me
@@ -35,7 +35,7 @@ modules['HomeAssistant'] = new function () {
 
     h.open(method, url, true);
     h.setRequestHeader("Content-Type", "application/json");
-    h.setRequestHeader("x-ha-access", this.config.api_pw);
+    h.setRequestHeader("Authorization", "Bearer "+this.config.long_lived_token);
     h.send('{}');
   }    
 

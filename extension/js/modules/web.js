@@ -19,7 +19,7 @@ modules['WEB'] = new function () {
       url = "http://"+url;
     }
 
-    h.open('GET', url, true);
+    h.open('GET', url, false);
     h.send('{}');
   }
 
