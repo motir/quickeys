@@ -190,7 +190,9 @@ function SaveScreenToConfig() {
       for (var param in modules[module].config) {
         e = $('#'+module+' input[name="'+param+'"]');
         v = GetFormElementVal(e);
-        config.modules[module][param] = v;
+        if (v!=null) {
+          config.modules[module][param] = v;
+        }
       }
     }
   }

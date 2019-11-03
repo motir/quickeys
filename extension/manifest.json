@@ -1,9 +1,9 @@
 {
   "name": "Quickeys - Home Automation Remote Controller",
   "description": "[Open source] A quick keyboard remote controller for HomeAssistant, Node-RED and Yamaha receivers",
-  "version": "1.2",
+  "version": "1.2.2",
   "permissions": [
-    "activeTab",
+    "http://*/*",
     "storage"
   ],
   "options_page": "config.html",
