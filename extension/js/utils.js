@@ -74,11 +74,19 @@ function keydown(e) {
   }
 
   var IGNORE_CHARS = [16, 17, 18, 27, 13];
-
+  
   // ignore some special characters
   if ($.inArray(e.keyCode, IGNORE_CHARS) > -1) {
     return;
   }
+
+  // make sure we only have one SHIFT / CTRL / ALT   (in cases the user chose multiple keys after a modifier, e.g. SHIFT A B)
+  key_sequence = key_sequence.replace("SHIFT ", "").replace("ALT ", "").replace("CTRL ", "");
+
+  // add Shift/Ctrl/Alt prefix to the sequence if they are pressed
+  if (e.shiftKey) key_sequence = "SHIFT " + key_sequence;
+  if (e.ctrlKey)  key_sequence = "CTRL " + key_sequence;
+  if (e.altKey)   key_sequence = "ALT " + key_sequence;
 
   if (e.keyCode == 8) {
     // backspace
@@ -87,7 +95,7 @@ function keydown(e) {
     }
   } else {
     // append key
-    key_sequence += e.key;  
+    key_sequence += e.key;
   }
 
   // sequence changed

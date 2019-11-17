@@ -73,7 +73,7 @@ function OnSequenceChanged() {
   // called when the key sequence was updated (user pressed a key)
 
   // if question mark --> send to config screen
-  if (key_sequence == '?') {
+  if (key_sequence.indexOf('?') > -1) {
     window.close();
     chrome.runtime.openOptionsPage();
     return;
