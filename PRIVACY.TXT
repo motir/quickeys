@@ -1,0 +1,4 @@
+Very simply put: NO data is being stored or shared in any way.
+All API calls are made directly to the relevant server.
+No tracking of any kind is being done.
+Do no evil.
